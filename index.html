@@ -83,15 +83,16 @@
         const clashApiBattle = (rootElement, clashBattleData) => {
             const app = document.querySelector(rootElement);
             console.log(clashBattleData);
+            const battleWrapper = document.createElement('div');
             battles = clashBattleData.map(element => {
                 const battleElement = document.createElement('div');
                 battleElement.textContent = `${element.type} ${element.gameMode.name} - ${element.battleTime} - ${element.opponent[0].name}`;
                 return battleElement;
             });
             battles.map(element => {
-                app.appendChild(element);
-            })
-
+                battleWrapper.appendChild(element);
+            });
+            app.appendChild(battleWrapper);
         };
         getPlayer('NIGEL').then(data => {
             console.log(data);
@@ -102,7 +103,14 @@
             clashApiPlayer('#app-players', data);
         });
         clashApiClan('#app-clan', clanData);
-        clashApiBattle('#app-battle', clashBattleData);
+        getBattleLog('JENNY').then(data => {
+            console.log(data);
+            clashApiBattle('#app-battle', data);
+        });
+        getBattleLog('NIGEL').then(data => {
+            console.log(data);
+            clashApiBattle('#app-battle', data);
+        });
     </script>
 </body>
 
