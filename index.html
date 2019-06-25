@@ -93,11 +93,11 @@
             })
 
         };
-        playerData('NIGEL').then(data => {
+        getPlayer('NIGEL').then(data => {
             console.log(data);
             clashApiPlayer('#app-players', data);
         });
-        playerData('JENNY').then(data => {
+        getPlayer('JENNY').then(data => {
             console.log(data);
             clashApiPlayer('#app-players', data);
         });
