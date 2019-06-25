@@ -31,6 +31,9 @@
     </script>
     <script type="application/javascript">
         console.log(clashData);
+        playerData().then(data => {
+            console.log(data);
+        });
         console.log(clashBattleData);
         console.log(clanData);
         const clashApiPlayer = (rootElement, playerData) => {

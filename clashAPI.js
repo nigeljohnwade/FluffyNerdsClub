@@ -1014,3 +1014,9 @@ window.clashData = {
     }
 }
 };
+
+const playerData = () => {
+    return fetch('clash_data/clash_profile_data_NIGEL_06-25-2019-21-41-12.json')
+        .then(response => response.json())
+        .then(data => data);
+}
