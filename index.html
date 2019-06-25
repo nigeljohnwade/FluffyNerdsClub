@@ -11,14 +11,19 @@
         }
 
         body {
-            font-family: "Clash";
+            font-family: "Clash",serif;
+            font-size: 17px;
         }
     </style>
 </head>
 
 <body>
-    <div id="app">
-        <h1>Fluffy Nerds Club</h1>
+    <h1>Fluffy Nerds Club</h1>
+    <div id="app-players">
+    </div>
+    <div id="app-clan">
+    </div>
+    <div id="app-battle">
     </div>
     <script src="clashAPI.js"></script>
     <script src="clanData.js"></script>
@@ -30,10 +35,6 @@
     //     .then(response => console.log(response.json()));
     </script>
     <script type="application/javascript">
-        console.log(clashData);
-        playerData().then(data => {
-            console.log(data);
-        });
         console.log(clashBattleData);
         console.log(clanData);
         const clashApiPlayer = (rootElement, playerData) => {
@@ -66,7 +67,7 @@
             const h2 = document.createElement('h2');
             h2.textContent = `${playerData.clan.name} (${playerData.clan.tag})`;
             app.appendChild(h2);
-        }
+        };
         const clashApiClan = (rootElement, clanData) => {
             const app = document.querySelector(rootElement);
             const clanMembers = clanData.memberList.map(element => {
@@ -78,7 +79,7 @@
                 clanMemberList.innerHTML += element;
             });
             app.appendChild(clanMemberList)
-        }
+        };
         const clashApiBattle = (rootElement, clashBattleData) => {
             const app = document.querySelector(rootElement);
             console.log(clashBattleData);
@@ -91,10 +92,17 @@
                 app.appendChild(element);
             })
 
-        }
-        clashApiPlayer('#app', clashData);
-        clashApiClan('#app', clanData);
-        clashApiBattle('#app', clashBattleData);
+        };
+        playerData('NIGEL').then(data => {
+            console.log(data);
+            clashApiPlayer('#app-players', data);
+        });
+        playerData('JENNY').then(data => {
+            console.log(data);
+            clashApiPlayer('#app-players', data);
+        });
+        clashApiClan('#app-clan', clanData);
+        clashApiBattle('#app-battle', clashBattleData);
     </script>
 </body>
 
