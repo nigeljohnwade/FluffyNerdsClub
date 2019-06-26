@@ -11,14 +11,14 @@
         }
 
         body {
-            font-family: "Clash",serif;
+            font-family: "Clash", serif;
             font-size: 17px;
         }
     </style>
 </head>
 
 <body>
-    <h1>Fluffy Nerds Club</h1>
+    <h1>FluffyNerds.Club</h1>
     <div id="app-players">
     </div>
     <div id="app-battle">
@@ -36,34 +36,6 @@
     //     .then(response => console.log(response.json()));
     </script>
     <script type="application/javascript">
-        console.log(clashBattleData);
-        console.log(clanData);
-        const clashApiClan = (rootElement, clanData) => {
-            const app = document.querySelector(rootElement);
-            const clanMembers = clanData.memberList.map(element => {
-                return `<li>${element.name} (${element.tag})</li>`;
-            });
-            console.log(clanMembers);
-            const clanMemberList = document.createElement('ul');
-            clanMembers.forEach(element => {
-                clanMemberList.innerHTML += element;
-            });
-            app.appendChild(clanMemberList)
-        };
-        const clashApiBattle = (rootElement, clashBattleData) => {
-            const app = document.querySelector(rootElement);
-            console.log(clashBattleData);
-            const battleWrapper = document.createElement('div');
-            battles = clashBattleData.map(element => {
-                const battleElement = document.createElement('div');
-                battleElement.textContent = `${element.type} ${element.gameMode.name} - ${element.battleTime} - ${element.opponent[0].name}`;
-                return battleElement;
-            });
-            battles.map(element => {
-                battleWrapper.appendChild(element);
-            });
-            app.appendChild(battleWrapper);
-        };
         getPlayer('NIGEL').then(data => {
             console.log(data);
             clashApiPlayer('#app-players', data);

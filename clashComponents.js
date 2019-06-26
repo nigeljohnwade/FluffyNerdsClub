@@ -29,3 +29,31 @@ const clashApiPlayer = (rootElement, playerData) => {
     h2.textContent = `${playerData.clan.name} (${playerData.clan.tag})`;
     app.appendChild(h2);
 };
+
+const clashApiClan = (rootElement, clanData) => {
+    const app = document.querySelector(rootElement);
+    const clanMembers = clanData.memberList.map(element => {
+        return `<li>${element.name} (${element.tag})</li>`;
+    });
+    console.log(clanMembers);
+    const clanMemberList = document.createElement('ul');
+    clanMembers.forEach(element => {
+        clanMemberList.innerHTML += element;
+    });
+    app.appendChild(clanMemberList)
+};
+
+const clashApiBattle = (rootElement, clashBattleData) => {
+    const app = document.querySelector(rootElement);
+    console.log(clashBattleData);
+    const battleWrapper = document.createElement('div');
+    battles = clashBattleData.map(element => {
+        const battleElement = document.createElement('div');
+        battleElement.textContent = `${element.type} ${element.gameMode.name} - ${element.battleTime} - ${element.opponent[0].name}`;
+        return battleElement;
+    });
+    battles.map(element => {
+        battleWrapper.appendChild(element);
+    });
+    app.appendChild(battleWrapper);
+};
