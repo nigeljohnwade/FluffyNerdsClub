@@ -1,15 +1,16 @@
 const clashApiPlayer = (rootElement, playerData) => {
     const { leagueStatistics, role, name, currentDeck, currentFavouriteCard } = playerData;
     const app = document.querySelector(rootElement);
+    const player = document.createElement('div');
     const h1 = document.createElement('h1');
     h1.textContent = `${name} (${role})`;
     const favouriteCardIcon = document.createElement('img');
     favouriteCardIcon.src = currentFavouriteCard.iconUrls.medium;
     h1.prepend(favouriteCardIcon);
-    app.appendChild(h1);
+    player.appendChild(h1);
     const stats = document.createElement('div');
-    stats.innerHTML = `<p>Best season trophies: ${leagueStatistics.bestSeason.trophies}</p><p>Current season best trophies: ${leagueStatistics.currentSeason.bestTrophies}</p>`;
-    app.appendChild(stats);
+    stats.innerHTML = `<p class="best-trophies">Best season trophies: ${leagueStatistics.bestSeason.trophies}</p><p class="current-best-trophies">Current season best trophies: ${leagueStatistics.currentSeason.bestTrophies}</p>`;
+    player.appendChild(stats);
     const cards = document.createElement('div');
     const cardsTitle = document.createElement('h2');
     cards.appendChild(cardsTitle);
@@ -22,7 +23,8 @@ const clashApiPlayer = (rootElement, playerData) => {
     currentDeckCardElements.forEach((element) => {
         cards.appendChild(element);
     });
-    app.appendChild(cards);
+    player.appendChild(cards);
+    app.appendChild(player);
 };
 
 const clashApiClan = (rootElement, clanData) => {
