@@ -2,15 +2,16 @@ const clashApiPlayer = (rootElement, playerData) => {
     const { leagueStatistics, role, name, currentDeck, currentFavouriteCard } = playerData;
     const app = document.querySelector(rootElement);
     const player = document.createElement('div');
+    const playerHeader = document.createElement('div');
     const h1 = document.createElement('h1');
     h1.textContent = `${name} (${role})`;
     const favouriteCardIcon = document.createElement('img');
     favouriteCardIcon.src = currentFavouriteCard.iconUrls.medium;
     h1.prepend(favouriteCardIcon);
-    player.appendChild(h1);
+    playerHeader.appendChild(h1);
     const stats = document.createElement('div');
     stats.innerHTML = `<p class="best-trophies">Best season trophies: ${leagueStatistics.bestSeason.trophies}</p><p class="current-best-trophies">Current season best trophies: ${leagueStatistics.currentSeason.bestTrophies}</p>`;
-    player.appendChild(stats);
+    playerHeader.appendChild(stats);
     const cards = document.createElement('div');
     const cardsTitle = document.createElement('h2');
     cards.appendChild(cardsTitle);
@@ -23,6 +24,7 @@ const clashApiPlayer = (rootElement, playerData) => {
     currentDeckCardElements.forEach((element) => {
         cards.appendChild(element);
     });
+    player.appendChild(playerHeader);
     player.appendChild(cards);
     app.appendChild(player);
 };

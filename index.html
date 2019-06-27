@@ -19,13 +19,18 @@
             font-size: 150px;
         }
 
-        #app-players > div{
+        #app-players > div > div:first-child {
             position: relative;
         }
 
-        #app-players > div div:nth-child(2){
+        #app-players > div > div:first-child div{
+            width: 100%;
+        }
+
+        #app-players > div > div:first-child div:nth-child(2){
             position: absolute;
             top: 0;
+            bottom: 0;
         }
 
         #app-players h1{
@@ -38,8 +43,23 @@
             transform: rotate(20deg);
         }
         #app-players [class*="trophies"]{
+            font-size: 35px;
             color: white;
             text-shadow: 0px 0px 5px black;
+        }
+
+        #app-players [class*="trophies"]:first-child{
+            position: absolute;
+            top: 50px;
+            transform-origin: left top;
+            transform: rotate(-10deg);
+        }
+        #app-players [class*="trophies"]:nth-child(2){
+            position: absolute;
+            left: 30%;
+            bottom: 0;
+            transform-origin: left top;
+            transform: rotate(-10deg);
         }
 
     </style>
