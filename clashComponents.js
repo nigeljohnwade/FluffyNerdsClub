@@ -50,7 +50,7 @@ const clashApiBattle = (rootElement, clashBattleData) => {
     const battles = clashBattleData.map(element => {
         const { type, gameMode, battleTime, opponent, team } = element;
         const battleElement = document.createElement('div');
-        battleElement.innerHTML = `<p>${battleTime}: ${type} ${gameMode.name} -  ${team[0].crowns} - ${opponent[0].crowns} ${opponent[0].name}</p>`;
+        battleElement.innerHTML = `<dt>${battleTime}:</dt><dd> ${type} ${gameMode.name} -  ${team[0].crowns} - ${opponent[0].crowns} ${opponent[0].name}</dd>`;
         return battleElement;
     });
     battles.map(element => {
