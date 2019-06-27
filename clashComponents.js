@@ -8,8 +8,7 @@ const clashApiPlayer = (rootElement, playerData) => {
     h1.prepend(favouriteCardIcon);
     app.appendChild(h1);
     const stats = document.createElement('div');
-    const statsContent = `<p>Best season trophies: ${leagueStatistics.bestSeason.trophies}</p><p>Current season best trophies: ${leagueStatistics.currentSeason.bestTrophies}</p>`;
-    stats.innerHTML = statsContent;
+    stats.innerHTML = `<p>Best season trophies: ${leagueStatistics.bestSeason.trophies}</p><p>Current season best trophies: ${leagueStatistics.currentSeason.bestTrophies}</p>`;
     app.appendChild(stats);
     const cards = document.createElement('div');
     const cardsTitle = document.createElement('h2');
@@ -30,8 +29,7 @@ const clashApiClan = (rootElement, clanData) => {
     const app = document.querySelector(rootElement);
     const { name, description, clanScore, clanWarTrophies } = clanData;
     const clanHeader = document.createElement('div');
-    const clanHeading = `<h1>Fluffy&shy;Nerds</h1><p class="description">${description}</p><p class="score">Score: ${clanScore}</p><p class="trophies">War Trophies ${clanWarTrophies}</p>`;
-    clanHeader.innerHTML = clanHeading;
+    clanHeader.innerHTML = `<h1>Fluffy&shy;Nerds</h1><p class="description">${description}</p><p class="score">Score: ${clanScore}</p><p class="trophies">War Trophies ${clanWarTrophies}</p>`;
     const clanMembers = clanData.memberList.map(element => {
         const {name, role, expLevel, trophies, arena} = element;
         return `<li>${name} (${role}): Trophies ${trophies} (${expLevel}/${arena.name})</li>`;
