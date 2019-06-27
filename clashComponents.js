@@ -47,6 +47,9 @@ const clashApiClan = (rootElement, clanData) => {
 const clashApiBattle = (rootElement, clashBattleData) => {
     const app = document.querySelector(rootElement);
     const battleWrapper = document.createElement('div');
+    const playerName = clashBattleData[0].team[0].name;
+    const playerHeading = document.createElement('h2');
+    playerHeading.textContent = `Last 25 battles for ${playerName}`;
     const battles = clashBattleData.map(element => {
         const { type, gameMode, battleTime, opponent, team } = element;
         const battleElement = document.createElement('div');
@@ -56,5 +59,6 @@ const clashApiBattle = (rootElement, clashBattleData) => {
     battles.map(element => {
         battleWrapper.appendChild(element);
     });
+    app.appendChild(playerHeading);
     app.appendChild(battleWrapper);
 };
