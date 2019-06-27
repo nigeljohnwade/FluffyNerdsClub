@@ -14,21 +14,32 @@
             font-family: "Clash", serif;
             font-size: 17px;
         }
+
+        #app-clan h1{
+            font-size: 150px;
+        }
+
+        #app-players h1{
+            font-size: 130px;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        #app-players h1 img{
+            float: right;
+            transform: rotate(20deg);
+        }
     </style>
 </head>
 
 <body>
-    <h1>FluffyNerds.Club</h1>
+    <div id="app-clan">
+    </div>
     <div id="app-players">
     </div>
     <div id="app-battle">
     </div>
-    <div id="app-clan">
-    </div>
     <script src="clashAPI.js"></script>
     <script src="clashComponents.js"></script>
-    <script src="clanData.js"></script>
-    <script src="clash_data/clashDataBattle06122018.js"></script>
     <script>
     // const clashApiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjIwMTdkMWExLWQ3Y2YtNDNkYy1hYjI5LTM1ODE4ODNiMDFmYSIsImlhdCI6MTU0MjEyMDM4MSwic3ViIjoiZGV2ZWxvcGVyLzUwZWFjMmYwLTBhNDItNTJiMS0zMDM1LTZiZWI3ODM5N2M3MSIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyIxMDQuMjQuMTE5Ljk4Il0sInR5cGUiOiJjbGllbnQifV19.EaHP95tdg08vixCoPuDlta4cwkxq88yu44q-MMKpZXzfWeQ-DQpY4FmSxb7bWPwqfKwUqGCiURHfm4BA8oY3Nw";
     // const clashApiPlayerUrl = `https://api.clashroyale.com/v1/players/%`;
@@ -44,7 +55,10 @@
             console.log(data);
             clashApiPlayer('#app-players', data);
         });
-        clashApiClan('#app-clan', clanData);
+        getClan('FLUFFY_NERDS').then(data => {
+            console.log(data);
+            clashApiClan('#app-clan', data);
+        })
         getBattleLog('JENNY').then(data => {
             console.log(data);
             clashApiBattle('#app-battle', data);

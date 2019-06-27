@@ -1,17 +1,22 @@
 const clashApiPlayer = (rootElement, playerData) => {
+    const { leagueStatistics, role, name, currentDeck, currentFavouriteCard } = playerData;
     const app = document.querySelector(rootElement);
     const h1 = document.createElement('h1');
-    h1.textContent = `${playerData.name} (${playerData.tag})`;
-    const favoutireCardIcon = document.createElement('img');
-    favoutireCardIcon.src = playerData.currentFavouriteCard.iconUrls.medium;
-    h1.appendChild(favoutireCardIcon);
+    h1.textContent = `${name} (${role})`;
+    const favouriteCardIcon = document.createElement('img');
+    favouriteCardIcon.src = currentFavouriteCard.iconUrls.medium;
+    h1.prepend(favouriteCardIcon);
     app.appendChild(h1);
+    const stats = document.createElement('div');
+    const statsContent = `<p>Best season trophies: ${leagueStatistics.bestSeason.trophies}</p><p>Current season best trophies: ${leagueStatistics.currentSeason.bestTrophies}</p>`;
+    stats.innerHTML = statsContent;
+    app.appendChild(stats);
     const cards = document.createElement('div');
     const cardsTitle = document.createElement('h2');
     cards.appendChild(cardsTitle);
     cardsTitle.textContent = "Current deck";
-    currentDeckCardElements = playerData.currentDeck.map((card) => {
-        let cardTemp = document.createElement('img');
+    const currentDeckCardElements = currentDeck.map((card) => {
+        const cardTemp = document.createElement('img');
         cardTemp.src = card.iconUrls.medium;
         return cardTemp;
     });
@@ -19,37 +24,33 @@ const clashApiPlayer = (rootElement, playerData) => {
         cards.appendChild(element);
     });
     app.appendChild(cards);
-    console.log(currentDeckCardElements);
-    const league = document.createElement('p');
-    league.textContent = `Best season trophies: ${playerData.leagueStatistics.bestSeason.trophies}
-        Current season best trophies: ${playerData.leagueStatistics.currentSeason.bestTrophies}
-        `;
-    app.appendChild(league);
-    const h2 = document.createElement('h2');
-    h2.textContent = `${playerData.clan.name} (${playerData.clan.tag})`;
-    app.appendChild(h2);
 };
 
 const clashApiClan = (rootElement, clanData) => {
     const app = document.querySelector(rootElement);
+    const { name, description, clanScore, clanWarTrophies } = clanData;
+    const clanHeader = document.createElement('div');
+    const clanHeading = `<h1>Fluffy&shy;Nerds</h1><p class="description">${description}</p><p class="score">Score: ${clanScore}</p><p class="trophies">War Trophies ${clanWarTrophies}</p>`;
+    clanHeader.innerHTML = clanHeading;
     const clanMembers = clanData.memberList.map(element => {
-        return `<li>${element.name} (${element.tag})</li>`;
+        const {name, role, expLevel, trophies, arena} = element;
+        return `<li>${name} (${role}): Trophies ${trophies} (${expLevel}/${arena.name})</li>`;
     });
-    console.log(clanMembers);
     const clanMemberList = document.createElement('ul');
     clanMembers.forEach(element => {
         clanMemberList.innerHTML += element;
     });
-    app.appendChild(clanMemberList)
+    app.appendChild(clanHeader);
+    app.appendChild(clanMemberList);
 };
 
 const clashApiBattle = (rootElement, clashBattleData) => {
     const app = document.querySelector(rootElement);
-    console.log(clashBattleData);
     const battleWrapper = document.createElement('div');
-    battles = clashBattleData.map(element => {
+    const battles = clashBattleData.map(element => {
+        const { type, gameMode, battleTime, opponent } = element;
         const battleElement = document.createElement('div');
-        battleElement.textContent = `${element.type} ${element.gameMode.name} - ${element.battleTime} - ${element.opponent[0].name}`;
+        battleElement.textContent = `${type} ${gameMode.name} - ${battleTime} - ${opponent[0].name}`;
         return battleElement;
     });
     battles.map(element => {
