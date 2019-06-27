@@ -48,9 +48,9 @@ const clashApiBattle = (rootElement, clashBattleData) => {
     const app = document.querySelector(rootElement);
     const battleWrapper = document.createElement('div');
     const battles = clashBattleData.map(element => {
-        const { type, gameMode, battleTime, opponent } = element;
+        const { type, gameMode, battleTime, opponent, team } = element;
         const battleElement = document.createElement('div');
-        battleElement.textContent = `${type} ${gameMode.name} - ${battleTime} - ${opponent[0].name}`;
+        battleElement.innerHTML = `<p>${battleTime}: ${type} ${gameMode.name} -  ${team[0].crowns} - ${opponent[0].crowns} ${opponent[0].name}</p>`;
         return battleElement;
     });
     battles.map(element => {
