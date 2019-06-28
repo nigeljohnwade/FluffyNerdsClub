@@ -7,6 +7,7 @@ const clashApiPlayer = (rootElement, playerData) => {
     h1.textContent = `${name} (${role})`;
     const favouriteCardIcon = document.createElement('img');
     favouriteCardIcon.src = currentFavouriteCard.iconUrls.medium;
+    favouriteCardIcon.alt = currentFavouriteCard.name;
     h1.prepend(favouriteCardIcon);
     playerHeader.appendChild(h1);
     const stats = document.createElement('div');
@@ -19,6 +20,7 @@ const clashApiPlayer = (rootElement, playerData) => {
     const currentDeckCardElements = currentDeck.map((card) => {
         const cardTemp = document.createElement('img');
         cardTemp.src = card.iconUrls.medium;
+        cardTemp.alt = card.name;
         return cardTemp;
     });
     currentDeckCardElements.forEach((element) => {
@@ -48,21 +50,15 @@ const clashApiClan = (rootElement, clanData) => {
 
 const clashApiBattle = (rootElement, clashBattleData) => {
     const app = document.querySelector(rootElement);
-    const battleWrapper = document.createElement('div');
     const battleList = document.createElement('dl');
     const playerName = clashBattleData[0].team[0].name;
     const playerHeading = document.createElement('h2');
     playerHeading.textContent = `Last 25 battles for ${playerName}`;
     const battles = clashBattleData.map(element => {
         const { type, gameMode, battleTime, opponent, team } = element;
-        const battleElement = document.createElement('div');
-        battleElement.innerHTML = `<dt>${battleTime}:</dt><dd> ${type} ${gameMode.name} -  ${team[0].crowns} - ${opponent[0].crowns} ${opponent[0].name}</dd>`;
-        return battleElement;
+        return `<dt>${battleTime}:</dt><dd> ${type} ${gameMode.name} -  ${team[0].crowns} - ${opponent[0].crowns} ${opponent[0].name}</dd>`;
     });
-    battles.map(element => {
-        battleList.appendChild(element);
-    });
-    battleWrapper.appendChild(battleList);
+    battleList.innerHTML = battles.join('');
     app.appendChild(playerHeading);
-    app.appendChild(battleWrapper);
+    app.appendChild(battleList);
 };
