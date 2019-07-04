@@ -37,7 +37,7 @@ const clashApiClan = (rootElement, clanData) => {
     const clanHeader = document.createElement('div');
     clanHeader.innerHTML = `<h1>Fluffy&shy;Nerds</h1><p class="description">${description}</p><p class="score">Score: ${clanScore}</p><p class="trophies">War Trophies ${clanWarTrophies}</p>`;
     const clanMembers = clanData.memberList.map(element => {
-        const {name, role, expLevel, trophies, arena} = element;
+        const { name, role, expLevel, trophies, arena } = element;
         return `<li>${name} (${role}): Trophies ${trophies} (${expLevel}/${arena.name})</li>`;
     });
     const clanMemberList = document.createElement('ul');
@@ -56,7 +56,15 @@ const clashApiBattle = (rootElement, clashBattleData) => {
     playerHeading.textContent = `Last 25 battles for ${playerName}`;
     const battles = clashBattleData.map(element => {
         const { type, gameMode, battleTime, opponent, team } = element;
-        return `<dt>${battleTime}:</dt><dd> ${type} ${gameMode.name} -  ${team[0].crowns} - ${opponent[0].crowns} ${opponent[0].name}</dd>`;
+        const teamCrowns = team.reduce((accumulator, item) => {
+            accumulator += item.crowns;
+            return accumulator;
+        }, 0);
+        const opponentCrowns = team.reduce((accumulator, item) => {
+            accumulator += item.crowns;
+            return accumulator;
+        }, 0);
+        return `<dt>${battleTime}:</dt><dd> ${type} ${gameMode.name} -  ${teamCrowns} - ${opponentCrowns} ${opponent[0].name}</dd>`;
     });
     battleList.innerHTML = battles.join('');
     app.appendChild(playerHeading);
