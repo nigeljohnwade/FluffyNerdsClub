@@ -64,9 +64,7 @@ const clashApiBattle = (rootElement, clashBattleData) => {
             accumulator += item.crowns;
             return accumulator;
         }, 0);
-        const date = [battleTime.substring(0, 3), battleTime.substring(4, 5), battleTime.substring(6, 7)];
-        const time = [battleTime.substring(9, 10), battleTime.substring(11, 12), battleTime.substring(13, 14)];
-        return `<dt>${arena.name} ${new Date(battleTime.substring(0, 3), battleTime.substring(4, 5), battleTime.substring(6, 7), battleTime.substring(9, 10), battleTime.substring(11, 12), battleTime.substring(13, 14)).toLocaleTimeString()}:</dt><dd> ${type} ${gameMode.name} -  ${teamCrowns} - ${opponentCrowns} ${opponent[0].name}</dd>`;
+        return `<dt>${arena.name} ${formatClashDate(battleTime).toLocaleString()}:</dt><dd> ${type} ${gameMode.name} -  ${teamCrowns} - ${opponentCrowns} ${opponent[0].name}</dd>`;
     });
     battleList.innerHTML = battles.join('');
     app.appendChild(playerHeading);
