@@ -1,5 +1,11 @@
 const clashApiPlayer = (rootElement, playerData) => {
-    const { leagueStatistics, role, name, currentDeck, currentFavouriteCard } = playerData;
+    const {
+        leagueStatistics,
+        role,
+        name,
+        currentDeck,
+        currentFavouriteCard,
+    } = playerData;
     const app = document.querySelector(rootElement);
     const player = document.createElement('div');
     const playerHeader = document.createElement('div');
@@ -33,12 +39,24 @@ const clashApiPlayer = (rootElement, playerData) => {
 
 const clashApiClan = (rootElement, clanData) => {
     const app = document.querySelector(rootElement);
-    const { name, description, clanScore, clanWarTrophies } = clanData;
+    const {
+        name,
+        description,
+        clanScore,
+        clanWarTrophies,
+    } = clanData;
     const clanHeader = document.createElement('div');
     clanHeader.innerHTML = `<h1>Fluffy&shy;Nerds</h1><p class="description">${description}</p><p class="score">Score: ${clanScore}</p><p class="trophies">War Trophies ${clanWarTrophies}</p>`;
     const clanMembers = clanData.memberList.map(element => {
-        const { name, role, expLevel, trophies, arena } = element;
-        return `<li>${name} (${role}): Trophies ${trophies} (${expLevel}/${arena.name})</li>`;
+        const {
+            name,
+            role,
+            expLevel,
+            trophies,
+            arena,
+            lastSeen,
+        } = element;
+        return `<li>${name} (${role}): Trophies ${trophies} (lvl ${expLevel}/${arena.name}) last seen ${formatClashDate(lastSeen).toLocaleString()}</li>`;
     });
     const clanMemberList = document.createElement('ul');
     clanMembers.forEach(element => {
@@ -55,7 +73,14 @@ const clashApiBattle = (rootElement, clashBattleData) => {
     const playerHeading = document.createElement('h2');
     playerHeading.textContent = `Last 25 battles for ${playerName}`;
     const battles = clashBattleData.map(element => {
-        const { arena, type, gameMode, battleTime, opponent, team } = element;
+        const {
+            arena,
+            type,
+            gameMode,
+            battleTime,
+            opponent,
+            team,
+        } = element;
         const teamCrowns = team.reduce((accumulator, item) => {
             accumulator += item.crowns;
             return accumulator;
