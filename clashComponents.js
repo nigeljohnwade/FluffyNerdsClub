@@ -1,3 +1,10 @@
+const cardIcon = (card) => {
+    const cardIcon = document.createElement('img');
+    cardIcon.src = card.iconUrls.medium;
+    cardIcon.alt = card.name;
+    return cardIcon;
+}
+
 const clashApiPlayer = (rootElement, playerData) => {
     const {
         leagueStatistics,
@@ -11,9 +18,7 @@ const clashApiPlayer = (rootElement, playerData) => {
     const playerHeader = document.createElement('div');
     const h1 = document.createElement('h1');
     h1.textContent = `${name} (${role})`;
-    const favouriteCardIcon = document.createElement('img');
-    favouriteCardIcon.src = currentFavouriteCard.iconUrls.medium;
-    favouriteCardIcon.alt = currentFavouriteCard.name;
+    const favouriteCardIcon = cardIcon(currentFavouriteCard);
     h1.prepend(favouriteCardIcon);
     playerHeader.appendChild(h1);
     const stats = document.createElement('div');
@@ -24,9 +29,7 @@ const clashApiPlayer = (rootElement, playerData) => {
     cards.appendChild(cardsTitle);
     cardsTitle.textContent = "Current deck";
     const currentDeckCardElements = currentDeck.map((card) => {
-        const cardTemp = document.createElement('img');
-        cardTemp.src = card.iconUrls.medium;
-        cardTemp.alt = card.name;
+        const cardTemp = cardIcon(card);
         return cardTemp;
     });
     currentDeckCardElements.forEach((element) => {
