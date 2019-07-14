@@ -100,11 +100,19 @@
             console.log(data);
             clashApiPlayer('#app-players', data);
         });
+        getPlayer('JENNY_2').then(data => {
+            console.log(data);
+            clashApiPlayer('#app-players', data);
+        });
         getClan('FLUFFY_NERDS').then(data => {
             console.log(data);
             clashApiClan('#app-clan', data);
-        })
+        });
         getBattleLog('JENNY').then(data => {
+            console.log(data);
+            clashApiBattle('#app-battle', data);
+        });
+        getBattleLog('JENNY_2').then(data => {
             console.log(data);
             clashApiBattle('#app-battle', data);
         });
