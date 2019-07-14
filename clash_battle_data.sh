@@ -20,18 +20,19 @@ FILENAME_CLAN="clash_clan_data_FLUFFY_NEDS_$NOW.json"
 FILENAME_CURRENT_CLAN="clash_clan_data_FLUFFY_NEDS_CURRENT.json"
 cd git/hashtagdayjob/clash_data/
 curl -X GET --header 'Accept: application/json' --header "$AUTH" "https://api.clashroyale.com/v1/players/%23$NIGEL/battlelog" > $FILENAME_BATTLE_NIGEL
-curl -X GET --header 'Accept: application/json' --header "$AUTH" "https://api.clashroyale.com/v1/players/%23$NIGEL/battlelog" > $FILENAME_BATTLE_CURRENT_NIGEL
 curl -X GET --header 'Accept: application/json' --header "$AUTH" "https://api.clashroyale.com/v1/players/%23$JENNY/battlelog" > $FILENAME_BATTLE_JENNY
 curl -X GET --header 'Accept: application/json' --header "$AUTH" "https://api.clashroyale.com/v1/players/%23$JENNY_2/battlelog" > $FILENAME_BATTLE_JENNY_2
-curl -X GET --header 'Accept: application/json' --header "$AUTH" "https://api.clashroyale.com/v1/players/%23$JENNY/battlelog" > $FILENAME_BATTLE_CURRENT_JENNY
-curl -X GET --header 'Accept: application/json' --header "$AUTH" "https://api.clashroyale.com/v1/players/%23$JENNY_2/battlelog" > $FILENAME_BATTLE_CURRENT_JENNY_2
 curl -X GET --header 'Accept: application/json' --header "$AUTH" "https://api.clashroyale.com/v1/players/%23$NIGEL" > $FILENAME_PROFILE_NIGEL
-curl -X GET --header 'Accept: application/json' --header "$AUTH" "https://api.clashroyale.com/v1/players/%23$NIGEL" > $FILENAME_PROFILE_CURRENT_NIGEL
 curl -X GET --header 'Accept: application/json' --header "$AUTH" "https://api.clashroyale.com/v1/players/%23$JENNY" > $FILENAME_PROFILE_JENNY
 curl -X GET --header 'Accept: application/json' --header "$AUTH" "https://api.clashroyale.com/v1/players/%23$JENNY_2" > $FILENAME_PROFILE_JENNY_2
+curl -X GET --header 'Accept: application/json' --header "$AUTH" "https://api.clashroyale.com/v1/clans/%23$FLUFFY_NERDS" > $FILENAME_CLAN
+cd git/FluffyNerdsClub/clash_data
 curl -X GET --header 'Accept: application/json' --header "$AUTH" "https://api.clashroyale.com/v1/players/%23$JENNY" > $FILENAME_PROFILE_CURRENT_JENNY
 curl -X GET --header 'Accept: application/json' --header "$AUTH" "https://api.clashroyale.com/v1/players/%23$JENNY_2" > $FILENAME_PROFILE_CURRENT_JENNY_2
-curl -X GET --header 'Accept: application/json' --header "$AUTH" "https://api.clashroyale.com/v1/clans/%23$FLUFFY_NERDS" > $FILENAME_CLAN
+curl -X GET --header 'Accept: application/json' --header "$AUTH" "https://api.clashroyale.com/v1/players/%23$NIGEL" > $FILENAME_PROFILE_CURRENT_NIGEL
 curl -X GET --header 'Accept: application/json' --header "$AUTH" "https://api.clashroyale.com/v1/clans/%23$FLUFFY_NERDS" > $FILENAME_CURRENT_CLAN
+curl -X GET --header 'Accept: application/json' --header "$AUTH" "https://api.clashroyale.com/v1/players/%23$JENNY_2/battlelog" > $FILENAME_BATTLE_CURRENT_JENNY_2
+curl -X GET --header 'Accept: application/json' --header "$AUTH" "https://api.clashroyale.com/v1/players/%23$JENNY/battlelog" > $FILENAME_BATTLE_CURRENT_JENNY
+curl -X GET --header 'Accept: application/json' --header "$AUTH" "https://api.clashroyale.com/v1/players/%23$NIGEL/battlelog" > $FILENAME_BATTLE_CURRENT_NIGEL
 
 
