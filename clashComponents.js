@@ -88,7 +88,7 @@ const clashApiBattle = (rootElement, clashBattleData) => {
             accumulator += item.crowns;
             return accumulator;
         }, 0);
-        const opponentCrowns = team.reduce((accumulator, item) => {
+        const opponentCrowns = opponent.reduce((accumulator, item) => {
             accumulator += item.crowns;
             return accumulator;
         }, 0);
