@@ -15,6 +15,7 @@ const clashApiPlayer = (rootElement, playerData) => {
     } = playerData;
     const app = document.querySelector(rootElement);
     const player = document.createElement('div');
+    player.id = name.replace(/[\s]/, '-');
     const playerHeader = document.createElement('div');
     const h1 = document.createElement('h1');
     h1.textContent = `${name} (${role})`;
@@ -69,10 +70,9 @@ const clashApiClan = (rootElement, clanData) => {
     app.appendChild(clanMemberList);
 };
 
-const clashApiBattle = (rootElement, clashBattleData) => {
+const clashApiBattle = (rootElement, clashBattleData, playerName) => {
     const app = document.querySelector(rootElement);
     const battleList = document.createElement('dl');
-    const playerName = clashBattleData[0].team[0].name;
     const playerHeading = document.createElement('h2');
     playerHeading.textContent = `Last 25 battles for ${playerName}`;
     const battles = clashBattleData.map(element => {
