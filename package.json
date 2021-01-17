@@ -19,8 +19,8 @@
   },
   "homepage": "https://github.com/nigeljohnwade/FluffyNerdsClub#readme",
   "devDependencies": {
-    "webpack": "^4.35.0",
-    "webpack-cli": "^3.3.5",
-    "webpack-dev-server": "^3.7.2"
+    "webpack": "^5.15.0",
+    "webpack-cli": "^4.3.1",
+    "webpack-dev-server": "^3.11.2"
   }
 }
