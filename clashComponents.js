@@ -50,7 +50,7 @@ const clashApiClan = (rootElement, clanData) => {
         clanWarTrophies,
     } = clanData;
     const clanHeader = document.createElement('div');
-    clanHeader.innerHTML = `<p class="description">${description}</p><p class="score">Score: ${clanScore}</p><p class="trophies">War Trophies ${clanWarTrophies}</p>`;
+    clanHeader.innerHTML = `<p class="description">${description}</p><p class="score">Clan Score: ${clanScore}</p><p class="trophies">War Trophies: ${clanWarTrophies}</p>`;
     const clanMembers = clanData.memberList.map(element => {
         const {
             name,
@@ -60,7 +60,12 @@ const clashApiClan = (rootElement, clanData) => {
             arena,
             lastSeen,
         } = element;
-        return `<li>${name} (${role}): Trophies ${trophies} (lvl ${expLevel}/${arena.name}) last seen ${formatClashDate(lastSeen).toLocaleString()}</li>`;
+        return `<li>
+            <span class="clan-player">${name} (${role}):</span>
+            <span class="clan-player-trophies">Trophies ${trophies}</span>
+            <span class="clan-player-level">(lvl ${expLevel}/${arena.name})</span>
+            <span class="clan-player-timestamp">last seen ${formatClashDate(lastSeen).toLocaleString()}</span>
+        </li>`;
     });
     const clanMemberList = document.createElement('ul');
     clanMembers.forEach(element => {
