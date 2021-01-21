@@ -3,9 +3,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="FluffyNerds Clan Data">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta
+        name="description"
+        content="FluffyNerds Clan Data"
+    >
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="ie=edge"
+    >
     <title>Fluffy Nerds Club</title>
     <style>
         @font-face {
@@ -19,8 +28,8 @@
             margin: auto;
             font-family: "Clash", serif;
             font-size: 17px;
-            background-color: #3287D0;
-            color: whitesmoke;
+            background-color: hsl(231, 40%, 55%);
+            color: hsl(263, 31%, 99%);
         }
 
         img {
@@ -28,29 +37,34 @@
             max-width: 277px;
         }
 
-        #app-clan h1 {
-            font-size: 10vw;
+        header{
+            margin-top: 2rem;
         }
 
-        #app-players>div>div:first-child {
+        header img{
+            min-width: 80em;
+            margin-left: -10em;
+        }
+
+        #app-players > div > div:first-child {
             position: relative;
         }
 
-        #app-players>div>div:nth-child(2) {
+        #app-players > div > div:nth-child(2) {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
         }
 
-        #app-players>div>div:nth-child(2) h2 {
+        #app-players > div > div:nth-child(2) h2 {
             flex-basis: 100%;
         }
 
-        #app-players>div>div:first-child div {
+        #app-players > div > div:first-child div {
             width: 100%;
         }
 
-        #app-players>div>div:first-child div:nth-child(2) {
+        #app-players > div > div:first-child div:nth-child(2) {
             position: absolute;
             top: 0;
             bottom: 0;
@@ -93,45 +107,51 @@
 </head>
 
 <body>
-    <div id="app-clan">
-    </div>
-    <div id="app-players">
-    </div>
-    <div id="app-battle">
-    </div>
-    <script src="utilities.js"></script>
-    <script src="clashAPI.js"></script>
-    <script src="clashComponents.js"></script>
-    <script type="application/javascript">
-        getPlayer('NIGEL').then(data => {
-            console.log(data);
-            clashApiPlayer('#app-players', data);
-        });
-        getPlayer('JENNY').then(data => {
-            console.log(data);
-            clashApiPlayer('#app-players', data);
-        });
-        getPlayer('JENNY_2').then(data => {
-            console.log(data);
-            clashApiPlayer('#app-players', data);
-        });
-        getClan('FLUFFY_NERDS').then(data => {
-            console.log(data);
-            clashApiClan('#app-clan', data);
-        });
-        getBattleLog('JENNY').then(data => {
-            console.log(data);
-            clashApiBattle('#DaMn-FluFFy', data, 'DaMn FluFFy');
-        });
-        getBattleLog('JENNY_2').then(data => {
-            console.log(data);
-            clashApiBattle('#Damn-Fluff', data, 'Damn-Fluff');
-        });
-        getBattleLog('NIGEL').then(data => {
-            console.log(data);
-            clashApiBattle('#By-Tor', data, 'By-Tor');
-        });
-    </script>
+<header>
+    <img
+        src="images/logo.svg"
+        alt="Fluffy Nerds"
+    />
+</header>
+<div id="app-clan">
+</div>
+<div id="app-players">
+</div>
+<div id="app-battle">
+</div>
+<script src="utilities.js"></script>
+<script src="clashAPI.js"></script>
+<script src="clashComponents.js"></script>
+<script type="application/javascript">
+    getPlayer('NIGEL').then(data => {
+        console.log(data);
+        clashApiPlayer('#app-players', data);
+    });
+    getPlayer('JENNY').then(data => {
+        console.log(data);
+        clashApiPlayer('#app-players', data);
+    });
+    getPlayer('JENNY_2').then(data => {
+        console.log(data);
+        clashApiPlayer('#app-players', data);
+    });
+    getClan('FLUFFY_NERDS').then(data => {
+        console.log(data);
+        clashApiClan('#app-clan', data);
+    });
+    getBattleLog('JENNY').then(data => {
+        console.log(data);
+        clashApiBattle('#DaMn-FluFFy', data, 'DaMn FluFFy');
+    });
+    getBattleLog('JENNY_2').then(data => {
+        console.log(data);
+        clashApiBattle('#Damn-Fluff', data, 'Damn-Fluff');
+    });
+    getBattleLog('NIGEL').then(data => {
+        console.log(data);
+        clashApiBattle('#By-Tor', data, 'By-Tor');
+    });
+</script>
 </body>
 
 </html>

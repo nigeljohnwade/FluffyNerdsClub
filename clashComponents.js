@@ -50,7 +50,7 @@ const clashApiClan = (rootElement, clanData) => {
         clanWarTrophies,
     } = clanData;
     const clanHeader = document.createElement('div');
-    clanHeader.innerHTML = `<h1>Fluffy&shy;Nerds</h1><p class="description">${description}</p><p class="score">Score: ${clanScore}</p><p class="trophies">War Trophies ${clanWarTrophies}</p>`;
+    clanHeader.innerHTML = `<p class="description">${description}</p><p class="score">Score: ${clanScore}</p><p class="trophies">War Trophies ${clanWarTrophies}</p>`;
     const clanMembers = clanData.memberList.map(element => {
         const {
             name,
