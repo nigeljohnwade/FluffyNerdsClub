@@ -50,7 +50,7 @@ const clashApiClan = (rootElement, clanData) => {
         clanWarTrophies,
     } = clanData;
     const clanHeader = document.createElement('div');
-    clanHeader.innerHTML = `<p class="description">${description}</p><p class="score">Clan Score: ${clanScore}</p><p class="trophies">War Trophies: ${clanWarTrophies}</p>`;
+    clanHeader.innerHTML = `<p class="description">${description}</p><div><p class="score">Clan Score: ${clanScore}</p><p class="trophies">War Trophies: ${clanWarTrophies}</p></div>`;
     clanData.memberList.sort((a, b) => a['lastSeen'] > b['lastSeen'] ? -1 : 1);
     const clanMembers = clanData.memberList.map(element => {
         const {
@@ -72,7 +72,10 @@ const clashApiClan = (rootElement, clanData) => {
     clanMembers.forEach(element => {
         clanMemberList.innerHTML += element;
     });
+    const clanMembersTitle = document.createElement('h2');
+    clanMembersTitle.textContent = 'Members';
     app.appendChild(clanHeader);
+    app.appendChild(clanMembersTitle);
     app.appendChild(clanMemberList);
 };
 
