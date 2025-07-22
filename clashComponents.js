@@ -3,7 +3,7 @@ const cardIcon = (card) => {
     cardIcon.src = card.iconUrls.medium;
     cardIcon.alt = card.name;
     return cardIcon;
-}
+};
 
 const clashApiPlayer = (rootElement, playerData) => {
     const {
@@ -28,7 +28,7 @@ const clashApiPlayer = (rootElement, playerData) => {
     const cards = document.createElement('div');
     const cardsTitle = document.createElement('h2');
     cards.appendChild(cardsTitle);
-    cardsTitle.textContent = "Current deck";
+    cardsTitle.textContent = 'Current deck';
     const currentDeckCardElements = currentDeck.map((card) => {
         const cardTemp = cardIcon(card);
         return cardTemp;
@@ -51,6 +51,7 @@ const clashApiClan = (rootElement, clanData) => {
     } = clanData;
     const clanHeader = document.createElement('div');
     clanHeader.innerHTML = `<p class="description">${description}</p><p class="score">Clan Score: ${clanScore}</p><p class="trophies">War Trophies: ${clanWarTrophies}</p>`;
+    clanData.memberList.sort((a, b) => a['lastSeen'] > b['lastSeen'] ? -1 : 1);
     const clanMembers = clanData.memberList.map(element => {
         const {
             name,
