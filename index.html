@@ -49,14 +49,24 @@
         h2{
             font-size: 1.5rem;
         }
+
+        #app-clan h2{
+            border-bottom: 0.125rem solid white;
+        }
+
         #app-clan >div {
             display: flex;
             justify-content: space-between;
         }
 
+        #app-clan >div>* {
+            flex-basis: 33.33%;
+        }
+
         #app-clan ul{
             list-style-type: none;
             padding-left: 5rem;
+            max-width: 40ch;
         }
         #app-clan ul li {
             margin-bottom: 2.5rem;
@@ -80,6 +90,11 @@
             text-align: right;
         }
 
+        #app-players{
+            margin-top: 2rem;
+            padding-top: 4rem;
+            border-top: 0.125rem solid white;
+        }
         #app-players > div > div:first-child {
             position: relative;
         }
